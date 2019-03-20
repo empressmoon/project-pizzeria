@@ -62,7 +62,7 @@
       thisProduct.renderInMenu();
       thisProduct.initAccordion();
 
-      console.log('new Product:', thisProduct);
+      //console.log('new Product:', thisProduct);
     }
 
     renderInMenu(){
@@ -90,50 +90,42 @@
 
       /* find the clickable trigger (the element that should react to clicking) */
 
-      const clickableProduct = document.querySelectorAll(select.menuProduct.clickable);
+      const clickableProduct = thisProduct.element.querySelector(select.menuProduct.clickable);
 
       /* START: click event listener to trigger */
 
-      for(const clickedProduct of clickableProduct){
+      clickableProduct.addEventListener('click', function () {
 
-        clickedProduct.addEventListener('click', function () {
-          //console.log('clicked');
+        /* prevent default action for event */
 
-          /* prevent default action for event */
+        event.preventDefault();
 
-          event.preventDefault();
+        /* toggle active class on element of thisProduct */
 
-          /* toggle active class on element of thisProduct */
+        thisProduct.element.classList.toggle('active');
 
-          thisProduct.element.classList.toggle('active');
+        /* find all active products */
 
-          /* find all active products */
+        const activeProducts = document.querySelectorAll(select.all.menuProductsActive);
 
-          const activeProducts = document.querySelectorAll('.active .product__header');
+        /* START LOOP: for each active product */
 
-          /* START LOOP: for each active product */
+        for(let activeProduct of activeProducts){
 
-          for(let activeProduct of activeProducts){
+          /* START: if the active product isn't the element of thisProduct */
 
-            /* START: if the active product isn't the element of thisProduct */
+          if(activeProduct != thisProduct.element){
 
-            if(activeProduct != thisProduct.element){
+            /* remove class active for the active product */
 
-              /* remove class active for the active product */
+            activeProduct.classList.remove('active');
 
-              activeProduct.classList.remove('active');
-
-              /* END: if the active product isn't the element of thisProduct */
-
-            }
-
-            /* END LOOP: for each active product */
-
+            /* END: if the active product isn't the element of thisProduct */
           }
-
-          /* END: click event listener to trigger */
-        });
-      }
+          /* END LOOP: for each active product */
+        }
+        /* END: click event listener to trigger */
+      });
     }
   }
 
