@@ -175,15 +175,16 @@
       for(let paramId in thisProduct.data.params){
 
         /* save the element in thisProduct.data.params with key paramId as const param */
-        const param = thisProduct.data.params[paramId];
-        //console.log(param);
+        const param = {paramId};
+        console.log(param);
 
 
         /* START LOOP: for each optionId in param.options */
         for(let optionId in param.options){
 
           /* save the element in param.options with key optionId as const option */
-          const option = param.options.element[optionId];
+          const option = {optionId};
+          console.log(option);
 
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
           //console.log(optionSelected);
