@@ -175,34 +175,33 @@
       for(let paramId in thisProduct.data.params){
 
         /* save the element in thisProduct.data.params with key paramId as const param */
-        const param = {paramId};
-        console.log(param);
-
+        const param = thisProduct.data.params[paramId];
+        //console.log(param);
 
         /* START LOOP: for each optionId in param.options */
         for(let optionId in param.options){
 
           /* save the element in param.options with key optionId as const option */
-          const option = {optionId};
-          console.log(option);
+          const option = param.options[optionId];
+          //console.log(param.options);
 
-          const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
+          const isOptionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
           //console.log(optionSelected);
 
           /* START IF: if option is selected and option is not default */
-          if(optionSelected && !option.default){
+          if(isOptionSelected && !option.default){
 
             /* add price of option to variable price */
-            price += optionSelected.price;
+            price += option.price;
 
           /* END IF: if option is selected and option is not default */
           }
 
           /* START ELSE IF: if option is not selected and option is default */
-          else if(!optionSelected && option.default){
+          else if(!isOptionSelected && option.default){
 
             /* deduct price of option from price */
-            price -= optionSelected.price;
+            price -= option.price;
 
           /* END ELSE IF: if option is not selected and option is default */
           }
