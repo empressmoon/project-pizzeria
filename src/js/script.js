@@ -175,7 +175,7 @@
       for(let paramId in thisProduct.data.params){
 
         /* save the element in thisProduct.data.params with key paramId as const param */
-        //const param = ;
+        const param = thisProduct.data.params[paramId];
         //console.log(param);
 
 
@@ -183,14 +183,16 @@
         for(let optionId in param.options){
 
           /* save the element in param.options with key optionId as const option */
+          const option = param.options.element[optionId];
+
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
-          console.log(optionSelected);
+          //console.log(optionSelected);
 
           /* START IF: if option is selected and option is not default */
           if(optionSelected && !option.default){
 
             /* add price of option to variable price */
-            price = optionSelected.price + price;
+            price += optionSelected.price;
 
           /* END IF: if option is selected and option is not default */
           }
@@ -199,7 +201,7 @@
           else if(!optionSelected && option.default){
 
             /* deduct price of option from price */
-            price = price - optionSelected.price;
+            price -= optionSelected.price;
 
           /* END ELSE IF: if option is not selected and option is default */
           }
