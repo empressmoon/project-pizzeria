@@ -150,7 +150,7 @@
             price -= option.price;
           }
 
-          const optionImage = thisProduct.imageWrapper.querySelectorAll('img[class~="'+ paramId + '-' + optionId+'"]');
+          const optionImage = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
 
           if(isOptionSelected){
             for(let image of optionImage){
