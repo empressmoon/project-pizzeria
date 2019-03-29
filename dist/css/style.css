@@ -236,6 +236,10 @@ input.error, select.error {
   padding: 60px 0;
   background: #333;
   color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 11000000;
 }
 
 .header__wrapper {
@@ -456,7 +460,7 @@ input.error, select.error {
 }
 
 .product-list {
-  padding: 36px 0;
+  padding: 240px 0 36px 0;
 }
 
 .product {

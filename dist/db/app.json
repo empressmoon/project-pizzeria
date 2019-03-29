@@ -220,106 +220,11 @@
   "order": [
     {
       "address": "test",
-      "totalPrice": 40,
+      "deliveryFee": 20,
+      "Phone": {},
+      "Address": {},
+      "products": [],
       "id": 1
-    },
-    {
-      "address": "test",
-      "totalPrice": 49,
-      "id": 2
-    },
-    {
-      "address": "test",
-      "totalPrice": 69,
-      "totalNumber": 3,
-      "subtotalPrice": 49,
-      "deliveryFee": 20,
-      "Phone": {},
-      "Address": {},
-      "id": 3
-    },
-    {
-      "address": "test",
-      "totalPrice": 69,
-      "totalNumber": 3,
-      "subtotalPrice": 49,
-      "deliveryFee": 20,
-      "Phone": {},
-      "Address": {},
-      "id": 4
-    },
-    {
-      "address": "test",
-      "totalPrice": 58,
-      "totalNumber": 3,
-      "subtotalPrice": 38,
-      "deliveryFee": 20,
-      "Phone": {},
-      "Address": {},
-      "products": [
-        {
-          "id": "breakfast",
-          "amount": 1,
-          "price": 9,
-          "priceSingle": 9,
-          "params": {
-            "coffee": {
-              "label": "Coffee type",
-              "options": {
-                "latte": "Latte"
-              }
-            }
-          }
-        },
-        {
-          "id": "pizza",
-          "amount": 1,
-          "price": 20,
-          "priceSingle": 20,
-          "params": {
-            "sauce": {
-              "label": "Sauce",
-              "options": {
-                "tomato": "Tomato"
-              }
-            },
-            "toppings": {
-              "label": "Toppings",
-              "options": {
-                "olives": "Olives",
-                "redPeppers": "Red peppers",
-                "greenPeppers": "Green peppers",
-                "mushrooms": "Mushrooms",
-                "basil": "Fresh basil"
-              }
-            },
-            "crust": {
-              "label": "pizza crust",
-              "options": {
-                "standard": "standard"
-              }
-            }
-          }
-        },
-        {
-          "id": "salad",
-          "amount": 1,
-          "price": 9,
-          "priceSingle": 9,
-          "params": {
-            "ingredients": {
-              "label": "Ingredients",
-              "options": {
-                "cucumber": "Cucumber",
-                "tomatoes": "Tomatoes",
-                "olives": "Olives",
-                "herbs": "Fresh herbs"
-              }
-            }
-          }
-        }
-      ],
-      "id": 5
     }
   ]
 }
