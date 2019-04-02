@@ -1,5 +1,6 @@
 import {Product} from './components/Product.js';
 import {Cart} from './components/Cart.js';
+import {Booking} from './components/Booking.js';
 import {select, settings, classNames} from './settings.js';
 
 const app = {
@@ -56,17 +57,17 @@ const app = {
     thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
     thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
 
-    //thisApp.activePage(thisApp.pages[0].id);
+    //thisApp.activatePage(thisApp.pages[0].id);
 
     let pagesMatchingHash = [];
-    if(window.location.hash.lenght >2){
+    if(window.location.hash.lenght > 2){
       const idFromHash = window.location.hash.replace('#/', '');
 
       pagesMatchingHash = thisApp.pages.filter(function(page){
         return page.id == idFromHash;
       });
 
-      thisApp.activePage(pagesMatchingHash.length ? pagesMatchingHash[0].id : thisApp.pages[0].id);
+      thisApp.activatePage(pagesMatchingHash.length ? pagesMatchingHash[0].id : thisApp.pages[0].id);
     }
 
     for(let link of thisApp.navLinks){
@@ -80,23 +81,31 @@ const app = {
         const id = href.replace('#', '');
 
         /* TODO: active page */
-        thisApp.activePage(id);
+        thisApp.activatePage(id);
       });
     }
   },
 
-  activePage: function(pageId){
+  activatePage: function(pageId){
     const thisApp = this;
 
     for(let link of thisApp.navLinks){
       link.classList.toggle(classNames.nav.active, link.getAttribute('href') == '#' + pageId);
     }
 
-    for(let activePage of thisApp.pages){
-      activePage.classList.toggle(classNames.pages.active, activePage.getAttribute('id') == pageId);
+    for(let activatePage of thisApp.pages){
+      activatePage.classList.toggle(classNames.pages.active, activatePage.getAttribute('id') == pageId);
     }
 
     window.location.hash = '#/' + pageId;
+  },
+
+  initBooking: function(){
+    const thisApp = this;
+
+    const bookingElem = document.querySelector(select.containerOf.booking);
+
+    thisApp.booking = new Booking(bookingElem);
   },
 
   init: function(){
@@ -110,6 +119,7 @@ const app = {
     thisApp.initPages();
     thisApp.initData();
     thisApp.initCart();
+    thisApp.initBooking();
   },
 
 };
