@@ -8,6 +8,7 @@ export class AmountWidget extends BaseWidget{
     const thisWidget = this;
 
     thisWidget.getElements();
+    thisWidget.renderValue();
     //thisWidget.value = settings.amountWidget.defaultValue;
     thisWidget.initActions();
   }
