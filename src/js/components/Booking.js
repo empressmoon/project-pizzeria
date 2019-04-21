@@ -57,8 +57,6 @@ export class Booking{
       eventsRepeat: settings.db.repeatParam + '&' + utils.queryParams(endDate),
     };
 
-    //console.log('getData params', params);
-
     const urls = {
       booking: settings.db.url + '/' + settings.db.booking + '?' + params.booking,
       eventsCurrent: settings.db.url + '/' + settings.db.event + '?' + params.eventsCurrent,
@@ -89,22 +87,45 @@ export class Booking{
 
     thisBooking.booked = {};
 
-    console.log('events:', eventsCurrent);
+    //console.log('eventsRepeat', eventsRepeat);
+    //console.log('bookings', bookings);
+    //console.log('events:', eventsCurrent);
 
     for(let eventBooked of eventsCurrent){
-      console.log('eventBooked:', eventBooked);
-      eventBooked.thisBooking.makeBooked(eventBooked.date, eventBooked.hour, eventBooked.duration, eventBooked.table);
+      thisBooking.makeBooked(eventBooked.date, eventBooked.hour, eventBooked.duration, eventBooked.table);
+    }
+
+    for(let booking of bookings){
+      thisBooking.makeBooked(booking.date, booking.hour, booking.duration, booking.table);
+    }
+
+    for(let eventRepeat of eventsRepeat){
+      thisBooking.makeBooked(eventRepeat.date, eventRepeat.hour, eventRepeat.duration, eventRepeat.table);
     }
   }
 
-  makeBooked(eventBooked.date, eventBooked.hour, eventBooked.duration, eventBooked.table){
+  makeBooked(eventDate, eventHour, eventDuration, eventTable){
     const thisBooking = this;
 
-    thisBooking.booked = {
-      'eventBooked.date': {
-        'eventBooked.hour': [eventBooked.table]
+    const hour = utils.hourToNumber(eventHour);
+
+    for(let i = hour; i < hour + eventDuration; i += 0.5){
+      if(thisBooking.booked[eventDate]){
+
+        if(thisBooking.booked[eventDate][i]){
+          thisBooking.booked[eventDate][i].push(eventTable);
+        } else {
+          thisBooking.booked[eventDate][i] = [eventTable];
+        }
+
+      } else {
+        thisBooking.booked[eventDate] = {
+          [hour]: [eventTable]
+        };
       }
     }
+
+    console.log('thisBooking.booked:', thisBooking.booked);
 
   }
 }
