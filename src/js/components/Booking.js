@@ -148,7 +148,9 @@ export class Booking{
 
     for(let table of thisBooking.dom.tables){
 
-      if(thisBooking.booked[thisBooking.date] && thisBooking.booked[thisBooking.date][thisBooking.hour] && thisBooking.booked[thisBooking.date][thisBooking.hour]){
+      const tableNumber = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
+
+      if(thisBooking.booked[thisBooking.date] && thisBooking.booked[thisBooking.date][thisBooking.hour] && thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableNumber)){
         table.classList.add(classNames.booking.tableBooked);
       } else {
         table.classList.remove(classNames.booking.tableBooked);
