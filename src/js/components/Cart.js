@@ -118,8 +118,8 @@ export class Cart{
       totalNumber: thisCart.totalNumber,
       subtotalPrice: thisCart.subtotalPrice,
       deliveryFee: thisCart.deliveryFee,
-      Phone: thisCart.dom.inputPhone,
-      Address: thisCart.dom.inputAddress,
+      Phone: thisCart.dom.inputPhone.value,
+      Address: thisCart.dom.inputAddress.value,
 
       products: [],
     };
