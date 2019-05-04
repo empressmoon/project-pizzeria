@@ -1,0 +1,172 @@
+
+.home-page-wrapper {
+  margin: ($base-size * 20.5) auto 0 auto;
+  padding: ($base-size * 2) ($base-size * 4);
+  background: $color-light;
+  border-bottom: 1px solid lighten($color-dark, 70%);
+  border-radius: $radius;
+}
+
+.home-page-widget {
+  transform: opacity 500ms;
+
+  &.loading {
+    opacity: 0.25;
+  }
+}
+
+.flex-wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-6 {
+  width: 50%;
+  height: 120px;
+  padding: ($base-size * 0.25);
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: $radius;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .home__subtitle {
+      bottom: 20%;
+      visibility: visible;
+    }
+
+    .home__title--center {
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.col-12 {
+  width: 100%;
+  height: 120px;
+  background-color: $color-main;
+  border-radius: $radius;
+  margin: ($base-size * 0.25);
+  text-align: center;
+  padding: 20px;
+}
+
+.home__title {
+  @extend .h1;
+  color: $color-light;
+}
+
+.hours-info {
+  @extend .h2;
+  font-weight: $font-normal;
+  color: $color-light;
+}
+
+.home__title--center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s linear;
+}
+
+.home__subtitle {
+  font-size: 14px;
+  color: $color-light;
+  font-weight: $font-normal;
+  position: absolute;
+  visibility: hidden;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.2s linear;
+}
+
+.link-instagram {
+  padding: 3px;
+  color: $color-main;
+  margin: 22px 0;
+}
+
+.image-wrapper {
+  width: 33.33%;
+  height: 194px;
+  padding: ($base-size * 0.25);
+  margin: 0 auto;
+  position: relative;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: $radius;
+  }
+
+  &:hover .img--darken {
+    filter: brightness(50%);
+  }
+
+  &:hover .icons {
+    visibility: visible;
+  }
+}
+
+.icons {
+  color: $color-light;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+
+  i {
+    margin: 6px;
+    font-size: 18px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .fa-heart:hover {
+    color: $color-danger;
+  }
+
+  .fa-share-alt:hover {
+    color: $color-warning;
+  }
+}
+
+.review-title {
+  @extend .h2;
+}
+
+.review-author {
+  font-style: italic;
+}
+
+.carousel__item {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+}
+
+.review-wapper {
+  width: 66.67%;
+  height: 194px;
+  padding: ($base-size * 0.25) ($base-size * 3);
+  margin: 0 auto;
+  position: relative;
+}

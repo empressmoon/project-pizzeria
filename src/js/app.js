@@ -1,7 +1,8 @@
 import {Product} from './components/Product.js';
 import {Cart} from './components/Cart.js';
 import {Booking} from './components/Booking.js';
-import {select, settings, classNames} from './settings.js';
+import {select, settings, classNames, templates} from './settings.js';
+import {utils} from './utils.js';
 
 const app = {
   initMenu: function(){
@@ -120,6 +121,18 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
+    thisApp.initHomePage();
+  },
+
+  initHomePage: function(){
+
+    const generatedHTML = templates.homePage();
+
+    const homePage = utils.createDOMFromHTML(generatedHTML);
+
+    const homeContainer = document.querySelector(select.containerOf.homePage);
+
+    homeContainer.appendChild(homePage);
   },
 
 };
