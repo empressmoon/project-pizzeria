@@ -18,6 +18,13 @@ export class Booking{
 
     const generatedHTML = templates.bookingWidget();
 
+    thisBooking.defaultValues = {
+      date: utils.dateToStr(new Date()),
+      hour: settings.hours.open,
+      people: settings.amountWidget.defaultValue,
+      duration: settings.amountWidget.defaultValue
+    };
+
     thisBooking.dom = {};
 
     thisBooking.dom.wrapper = bookingData;
@@ -35,6 +42,8 @@ export class Booking{
     thisBooking.dom.inputPhone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
     thisBooking.dom.inputAddress = thisBooking.dom.wrapper.querySelector(select.booking.address);
     thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
+  
+    thisBooking.setDefaultValues();
   }
 
   initWidgets(){
@@ -82,7 +91,7 @@ export class Booking{
 
     thisBooking.dom.form.addEventListener('submit', function(){
       event.preventDefault();
-      thisBooking.sendOrder();
+      thisBooking.sendBooking();
     });
   }
 
@@ -153,6 +162,7 @@ export class Booking{
       }
     }
 
+
     //thisBooking.updateDOM();
 
     console.log('thisBooking.booked:', thisBooking.booked);
@@ -198,22 +208,29 @@ export class Booking{
     }
   }
 
-  sendOrder(){
+  setDefaultValues(){
+    const thisBooking = this;
+
+    thisBooking.hour = thisBooking.defaultValues.hour;
+    thisBooking.date = thisBooking.defaultValues.date;
+    thisBooking.people = thisBooking.defaultValues.people;
+    thisBooking.duration = thisBooking.defaultValues.duration;
+  }
+
+  sendBooking(){
     const thisBooking = this;
     const url = settings.db.url + '/' + settings.db.booking;
 
     const payload = {
       date: thisBooking.date,
-      hour: thisBooking.hour,
+      hour: utils.numberToHour(thisBooking.hour),
       table: thisBooking.table,
       ppl: thisBooking.people,
       duration: thisBooking.duration,
-      repeat: false,
       Phone: thisBooking.dom.inputPhone.value,
       Address: thisBooking.dom.inputAddress.value,
       starters: thisBooking.starters,
     };
-
 
     const options = {
       method: 'POST',
@@ -228,7 +245,10 @@ export class Booking{
         return response.json();
       }).then(function(parsedResponse){
         console.log('parsedResponse', parsedResponse);
-      });
+        thisBooking.dom.form.reset();
+        thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
 
+        //thisBooking.makeBooked(thisBooking.date, thisBooking.hour, thisBooking.duration, thisBooking.table);
+      });
   }
 }
