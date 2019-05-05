@@ -13,6 +13,8 @@ export const select = {
     pages: '#pages',
     booking: '.booking-wrapper',
     homePage: '.home-page-wrapper',
+    orderLink: '#order-link',
+    bookLink: '#book-link',
   },
   all: {
     menuProducts: '#product-list > .product',

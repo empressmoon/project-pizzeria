@@ -76,7 +76,6 @@ const app = {
         const clickedElement = this;
         event.preventDefault();
 
-
         /* TODO: get page id from href */
         const href = clickedElement.getAttribute('href');
         const id = href.replace('#', '');
@@ -125,6 +124,7 @@ const app = {
   },
 
   initHomePage: function(){
+    const thisApp = this;
 
     const generatedHTML = templates.homePage();
 
@@ -133,6 +133,17 @@ const app = {
     const homeContainer = document.querySelector(select.containerOf.homePage);
 
     homeContainer.appendChild(homePage);
+
+    const orderLink = document.querySelector(select.containerOf.orderLink);
+    const bookLink = document.querySelector(select.containerOf.bookLink);
+
+    orderLink.addEventListener('click', function(){
+      thisApp.activatePage('order');
+    });
+
+    bookLink.addEventListener('click', function(){
+      thisApp.activatePage('booking');
+    });
   },
 
 };

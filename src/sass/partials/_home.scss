@@ -15,7 +15,7 @@
   }
 }
 
-.flex-wrapper {
+.flex-wrapper, .carousel__item {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -144,7 +144,7 @@
   }
 
   .fa-share-alt:hover {
-    color: $color-warning;
+    color: lighten($color-dark, 55%);
   }
 }
 
@@ -154,13 +154,6 @@
 
 .review-author {
   font-style: italic;
-}
-
-.carousel__item {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-
 }
 
 .review-wapper {
