@@ -42,11 +42,7 @@ export class Booking{
     thisBooking.dom.inputPhone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
     thisBooking.dom.inputAddress = thisBooking.dom.wrapper.querySelector(select.booking.address);
     thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> a68d8aa77106576fbeccb80234c1c66cecba19d9
     thisBooking.setDefaultValues();
   }
 
@@ -64,7 +60,6 @@ export class Booking{
 
     thisBooking.dom.peopleAmount.addEventListener('updated', function(){
       thisBooking.people = thisBooking.peopleAmount.value;
-
     });
 
     thisBooking.dom.hoursAmount.addEventListener('updated', function(){
@@ -76,8 +71,8 @@ export class Booking{
 
       table.addEventListener('click', function(){
         event.preventDefault();
-        table.classList.toggle(classNames.booking.tableBooked);
-        thisBooking.table = tableNumber;
+        table.classList.add(classNames.booking.tableBooked);
+        thisBooking.table = tableNumber;        
       });
     }
 
@@ -166,8 +161,7 @@ export class Booking{
       }
     }
 
-
-    //thisBooking.updateDOM();
+    thisBooking.updateDOM();
 
     console.log('thisBooking.booked:', thisBooking.booked);
   }
@@ -201,7 +195,6 @@ export class Booking{
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
 
     for(let table of thisBooking.dom.tables){
-
       const tableNumber = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
 
       if(thisBooking.booked[thisBooking.date] && thisBooking.booked[thisBooking.date][thisBooking.hour] && thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableNumber)){
@@ -249,13 +242,16 @@ export class Booking{
         return response.json();
       }).then(function(parsedResponse){
         console.log('parsedResponse', parsedResponse);
+
+        thisBooking.makeBooked(
+          payload.date,
+          payload.hour,
+          payload.duration,
+          payload.table
+        );
+
         thisBooking.dom.form.reset();
         thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
-<<<<<<< HEAD
-=======
-
->>>>>>> a68d8aa77106576fbeccb80234c1c66cecba19d9
-        //thisBooking.makeBooked(thisBooking.date, thisBooking.hour, thisBooking.duration, thisBooking.table);
       });
   }
 }
