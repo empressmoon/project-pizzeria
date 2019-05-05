@@ -83,11 +83,23 @@
   }
 
   &__fill {
-    background: $color-success;
+    background: lighten($color-dark, 70%);
     transition-timing-function: cubic-bezier(0, 1, 0, 1);
     transition: width 100ms;
     box-shadow: none;
   }
+}
+
+.no-tables {
+  background: $color-danger;
+}
+
+.one-table {
+  background: $color-warning;
+}
+
+..all-tables: {
+  background: $color-success;
 }
 
 .flatpickr-day {

@@ -97,6 +97,11 @@ export const classNames = {
   pages: {
     active: 'active',
   },
+  rangeSlider: {
+    noTables: 'no-tables',
+    oneTable: 'one-table',
+    allTables: 'all-tables',
+  }
 };
 
 export const settings = {

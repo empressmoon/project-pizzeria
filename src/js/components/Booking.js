@@ -68,11 +68,14 @@ export class Booking{
       });
     }
 
+    thisBooking.starters = [];
+
     for(let starter of thisBooking.dom.starters){
       starter.addEventListener('change', function(){
         if(this.checked){
-          console.log('checkbox is checked', starter.value);
-          thisBooking.starter = starter.value;
+          thisBooking.starters.push(starter.value);
+        } else {
+          thisBooking.starters.splice(thisBooking.starters.indexOf(starter.value, 1));
         }
       });
     }
@@ -201,16 +204,16 @@ export class Booking{
 
     const payload = {
       date: thisBooking.date,
-      time: thisBooking.hour,
+      hour: thisBooking.hour,
       table: thisBooking.table,
-      people: thisBooking.people,
+      ppl: thisBooking.people,
       duration: thisBooking.duration,
+      repeat: false,
       Phone: thisBooking.dom.inputPhone.value,
       Address: thisBooking.dom.inputAddress.value,
-      starters: [],
+      starters: thisBooking.starters,
     };
 
-    payload.starters.push(thisBooking.starter);
 
     const options = {
       method: 'POST',
