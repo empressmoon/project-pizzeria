@@ -56,7 +56,7 @@ export class CartProduct{
     });
 
     thisCartProduct.dom.wrapper.dispatchEvent(event);
-    console.log('clicked remove');
+    //console.log('clicked remove');
   }
 
   initActions(){

@@ -42,6 +42,7 @@ export class Booking{
     thisBooking.dom.inputPhone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
     thisBooking.dom.inputAddress = thisBooking.dom.wrapper.querySelector(select.booking.address);
     thisBooking.dom.starters = thisBooking.dom.wrapper.querySelectorAll(select.booking.starters);
+    thisBooking.dom.availabilityRangeSlider = thisBooking.dom.wrapper.querySelector(select.booking.availabilityRangeSlider);
 
     thisBooking.setDefaultValues();
   }
@@ -54,7 +55,13 @@ export class Booking{
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
 
-    thisBooking.dom.wrapper.addEventListener('updated', function(){
+    thisBooking.dom.datePicker.addEventListener('updated', function(){
+      thisBooking.clearTableAvailability();
+      thisBooking.updateDOM();
+      thisBooking.initTableAvailability();
+    });
+
+    thisBooking.dom.hourPicker.addEventListener('updated', function(){
       thisBooking.updateDOM();
     });
 
@@ -72,7 +79,7 @@ export class Booking{
       table.addEventListener('click', function(){
         event.preventDefault();
         table.classList.add(classNames.booking.tableBooked);
-        thisBooking.table = tableNumber;        
+        thisBooking.table = tableNumber;
       });
     }
 
@@ -162,6 +169,7 @@ export class Booking{
     }
 
     thisBooking.updateDOM();
+    thisBooking.initTableAvailability();
 
     console.log('thisBooking.booked:', thisBooking.booked);
   }
@@ -203,6 +211,43 @@ export class Booking{
         table.classList.remove(classNames.booking.tableBooked);
       }
     }
+  }
+
+  initTableAvailability(){
+    const thisBooking = this;
+
+    const tableAvailability = [];
+
+    for(let i = settings.hours.open; i < settings.hours.close; i += 0.5){
+      if(thisBooking.booked[thisBooking.date][i]){
+        thisBooking.booked[thisBooking.date][i].push[thisBooking.table];
+      } else {
+        thisBooking.booked[thisBooking.date][i] = [];
+      }
+      //console.log(thisBooking.booked[thisBooking.date][i]);
+      tableAvailability.push(thisBooking.booked[thisBooking.date][i].length);
+    }
+
+    //console.log('availability', tableAvailability);
+
+    for(let i = 0; i < tableAvailability.length; i++){
+      const divRangeSlider = document.createElement('div');
+      divRangeSlider.classList.add('table-availability');
+
+      if(tableAvailability[i] === 2){
+        divRangeSlider.classList.add(classNames.rangeSlider.oneTable);
+      } else if(tableAvailability[i] === 3){
+        divRangeSlider.classList.add(classNames.rangeSlider.noTables);
+      } else {
+        divRangeSlider.classList.add(classNames.rangeSlider.allTables);
+      }
+      thisBooking.dom.availabilityRangeSlider.appendChild(divRangeSlider);
+    }
+
+  }
+
+  clearTableAvailability(){
+    document.getElementById('availability').innerHTML = '';
   }
 
   setDefaultValues(){

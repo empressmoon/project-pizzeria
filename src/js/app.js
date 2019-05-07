@@ -100,29 +100,6 @@ const app = {
     window.location.hash = '#/' + pageId;
   },
 
-  initBooking: function(){
-    const thisApp = this;
-
-    const bookingElem = document.querySelector(select.containerOf.booking);
-
-    thisApp.booking = new Booking(bookingElem);
-  },
-
-  init: function(){
-    const thisApp = this;
-    //console.log('*** App starting ***');
-    //console.log('thisApp:', thisApp);
-    //console.log('classNames:', classNames);
-    //console.log('settings:', settings);
-    //console.log('templates:', templates);
-
-    thisApp.initPages();
-    thisApp.initData();
-    thisApp.initCart();
-    thisApp.initBooking();
-    thisApp.initHomePage();
-  },
-
   initHomePage: function(){
     const thisApp = this;
 
@@ -146,6 +123,28 @@ const app = {
     });
   },
 
+  initBooking: function(){
+    const thisApp = this;
+
+    const bookingElem = document.querySelector(select.containerOf.booking);
+
+    thisApp.booking = new Booking(bookingElem);
+  },
+
+  init: function(){
+    const thisApp = this;
+    //console.log('*** App starting ***');
+    //console.log('thisApp:', thisApp);
+    //console.log('classNames:', classNames);
+    //console.log('settings:', settings);
+    //console.log('templates:', templates);
+
+    thisApp.initPages();
+    thisApp.initData();
+    thisApp.initCart();
+    thisApp.initBooking();
+    thisApp.initHomePage();
+  },
 };
 
 app.init();

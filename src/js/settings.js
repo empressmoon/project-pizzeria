@@ -72,6 +72,7 @@ export const select = {
     phone: '[name="phone"]',
     address: '[name="address"]',
     starters: '.checkbox [type="checkbox"]',
+    availabilityRangeSlider: '.availability-wrapper',
   },
   nav: {
     links: '.main-nav a',

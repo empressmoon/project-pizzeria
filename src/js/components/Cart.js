@@ -69,7 +69,6 @@ export class Cart{
     thisCart.update();
 
     //console.log('thisCart.products', thisCart.products);
-
     //console.log('adding product', menuProduct);
   }
 
@@ -91,10 +90,6 @@ export class Cart{
         elem.innerHTML = thisCart[key];
       }
     }
-
-    console.log('totalNumber', thisCart.totalNumber);
-    console.log('subtotal', thisCart.subtotalPrice);
-    console.log('totalPrice', thisCart.totalPrice);
   }
 
   remove(cartProduct){
