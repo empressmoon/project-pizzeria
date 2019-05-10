@@ -24,7 +24,7 @@ export class DatePicker extends BaseWidget{
     flatpickr(thisWidget.dom.input, {
       defaultDate: thisWidget.minDate,
       minDate: thisWidget.minDate,
-      maxDate: thisWidget.maxDate,
+      maxDate: utils.addDays(new Date(), settings.datePicker.maxDaysInFuture - 1),
       'disable': [
         function(date) {
           // return true to disable

@@ -99,9 +99,11 @@ export const classNames = {
     active: 'active',
   },
   rangeSlider: {
+    divWrapper: 'availability',
+    div: 'table-availability',
     noTables: 'no-tables',
     oneTable: 'one-table',
-    allTables: 'all-tables',
+    allTables: 'all-tables',    
   }
 };
 

@@ -171,7 +171,7 @@ export class Booking{
     thisBooking.updateDOM();
     thisBooking.initTableAvailability();
 
-    //console.log('thisBooking.booked:', thisBooking.booked);
+    console.log('thisBooking.booked:', thisBooking.booked);
   }
 
   makeBooked(eventDate, eventHour, eventDuration, eventTable){
@@ -232,7 +232,7 @@ export class Booking{
 
     for(let i = 0; i < tableAvailability.length; i++){
       const divRangeSlider = document.createElement('div');
-      divRangeSlider.classList.add('table-availability');
+      divRangeSlider.classList.add(classNames.rangeSlider.div);
 
       if(tableAvailability[i] === 2){
         divRangeSlider.classList.add(classNames.rangeSlider.oneTable);
@@ -243,11 +243,10 @@ export class Booking{
       }
       thisBooking.dom.availabilityRangeSlider.appendChild(divRangeSlider);
     }
-
   }
 
   clearTableAvailability(){
-    document.getElementById('availability').innerHTML = '';
+    document.getElementById(classNames.rangeSlider.divWrapper).innerHTML = '';
   }
 
   setDefaultValues(){
@@ -297,6 +296,8 @@ export class Booking{
 
         thisBooking.dom.form.reset();
         thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
+        thisBooking.clearTableAvailability();
+        thisBooking.initTableAvailability();
       });
   }
 }
