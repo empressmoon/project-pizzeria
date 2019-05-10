@@ -76,11 +76,9 @@ const app = {
         const clickedElement = this;
         event.preventDefault();
 
-        /* TODO: get page id from href */
         const href = clickedElement.getAttribute('href');
         const id = href.replace('#', '');
 
-        /* TODO: active page */
         thisApp.activatePage(id);
       });
     }

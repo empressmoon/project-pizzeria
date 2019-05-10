@@ -171,7 +171,7 @@ export class Booking{
     thisBooking.updateDOM();
     thisBooking.initTableAvailability();
 
-    console.log('thisBooking.booked:', thisBooking.booked);
+    //console.log('thisBooking.booked:', thisBooking.booked);
   }
 
   makeBooked(eventDate, eventHour, eventDuration, eventTable){

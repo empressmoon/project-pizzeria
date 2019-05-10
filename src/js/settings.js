@@ -103,7 +103,7 @@ export const classNames = {
     div: 'table-availability',
     noTables: 'no-tables',
     oneTable: 'one-table',
-    allTables: 'all-tables',    
+    allTables: 'all-tables',
   }
 };
 
